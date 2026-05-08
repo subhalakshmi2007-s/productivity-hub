@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Productivity Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container auth-container">
+        <div class="auth-card">
+            <h1>✅ Productivity Hub</h1>
+            <p class="tagline">Sign in to manage your tasks</p>
+            
+            <div id="auth-message" class="auth-message"></div>
+            
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="login-username">Username</label>
+                    <input type="text" id="login-username" placeholder="Enter username" required>
+                </div>
+                <div class="input-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" placeholder="Enter password" required>
+                </div>
+                <button type="submit" class="btn-primary">Login →</button>
+            </form>
+            
+            <p class="auth-switch">
+                Don't have an account? <a href="#" id="show-register">Register</a>
+            </p>
+            
+            <form id="register-form" style="display: none;">
+                <div class="input-group">
+                    <label for="reg-username">Username</label>
+                    <input type="text" id="reg-username" placeholder="Choose username" required>
+                </div>
+                <div class="input-group">
+                    <label for="reg-password">Password</label>
+                    <input type="password" id="reg-password" placeholder="Choose password" required>
+                </div>
+                <button type="submit" class="btn-primary">Register →</button>
+            </form>
+        </div>
+    </div>
+    <script src="auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!-- frontend/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Tasks | Productivity Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>📋 Productivity Hub</h1>
+            <div class="header-actions">
+                <button id="dark-mode-toggle" class="icon-btn">🌙 Dark Mode</button>
+                <button id="logout-btn" class="icon-btn">🚪 Logout</button>
+            </div>
+        </div>
+        
+        <!-- Welcome user -->
+        <div id="user-welcome" class="user-welcome"></div>
+        
+        <!-- Add Task Form -->
+        <div class="add-task-panel">
+            <input type="text" id="task-input" placeholder="Enter task..." class="task-input">
+            <select id="category-select" class="category-select">
+                <option value="Work">💼 Work</option>
+                <option value="Personal">🏠 Personal</option>
+                <option value="Shopping">🛒 Shopping</option>
+                <option value="Health">💪 Health</option>
+                <option value="Other">📌 Other</option>
+            </select>
+            <button id="add-task-btn" class="btn-primary">+ Add</button>
+        </div>
+        
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="🔍 Search tasks..." class="task-input">
+        </div>
+        
+        <!-- Task Stats -->
+        <div class="stats">
+            <span>📊 Total: <span id="total-count">0</span></span>
+            <span>✅ Completed: <span id="completed-count">0</span></span>
+            <span>⏳ Pending: <span id="pending-count">0</span></span>
+        </div>
+        
+        <!-- Task List -->
+        <div class="task-list-container">
+            <h3>My Tasks</h3>
+            <div id="task-list" class="task-list">
+                <!-- Tasks will be injected here -->
+                <div class="empty-state">✨ No tasks yet. Add your first task above!</div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
