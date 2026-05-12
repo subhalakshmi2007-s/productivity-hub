@@ -4,17 +4,26 @@ from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity
 from database import db
 import os
 
-app = Flask(__name__)
+app = Flask(
+    __name__,
+    static_folder="../frontend",
+    static_url_path=""
+)
+
 CORS(app)
 
 # JWT config
 app.config['JWT_SECRET_KEY'] = 'super-secret-productivity-key-change-in-prod'
 jwt = JWTManager(app)
 
-# ---------------- HOME ROUTE ----------------
+# ---------------- FRONTEND ROUTES ----------------
 @app.route("/")
 def home():
-    return "🚀 Productivity Hub Backend is Live"
+    return app.send_static_file("index.html")
+
+@app.route('/<path:path>')
+def serve_static(path):
+    return app.send_static_file(path)
 
 # ---------------- AUTH BLUEPRINT ----------------
 from auth import auth_bp
@@ -84,7 +93,7 @@ def delete_task(task_id):
     db.save_user_tasks(current_user, new_tasks)
     return jsonify({'message': 'Deleted'}), 200
 
-# ---------------- RUN SERVER (RENDER FIXED) ----------------
+# ---------------- RUN SERVER ----------------
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)
