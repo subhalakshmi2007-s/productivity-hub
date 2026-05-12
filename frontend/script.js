@@ -1,5 +1,6 @@
 // frontend/script.js
-const API_BASE = 'http://localhost:5000/api';
+// Render backend URL - உங்க Render URL-க்கு மாத்துங்க
+const API_BASE = 'https://productivity-hub-pwie.onrender.com/api';
 
 // Get auth token
 function getToken() {
@@ -67,6 +68,7 @@ const pendingSpan = document.getElementById('pending-count');
 async function fetchTasks() {
     if (!checkAuth()) return;
     try {
+        console.log('Fetching tasks from:', `${API_BASE}/tasks`);
         const response = await fetch(`${API_BASE}/tasks`, {
             headers: { 'Authorization': `Bearer ${getToken()}` }
         });
@@ -81,7 +83,7 @@ async function fetchTasks() {
     } catch (err) {
         console.error('Fetch tasks error:', err);
         if (taskListDiv) {
-            taskListDiv.innerHTML = '<div class="empty-state">⚠️ Could not load tasks. Make sure backend is running on port 5000</div>';
+            taskListDiv.innerHTML = '<div class="empty-state">⚠️ Could not load tasks. Make sure backend is running.</div>';
         }
     }
 }

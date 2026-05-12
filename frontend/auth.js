@@ -1,5 +1,6 @@
 // frontend/auth.js
-const API_BASE = 'http://localhost:5000/api';
+// Render backend URL - உங்க Render URL-க்கு மாத்துங்க
+const API_BASE = 'https://productivity-hub-pwie.onrender.com/api';
 
 // Helper to show messages
 function showMessage(elementId, message, isError = false) {
@@ -27,6 +28,7 @@ document.getElementById('login-form')?.addEventListener('submit', async (e) => {
     }
     
     try {
+        console.log('Attempting login to:', `${API_BASE}/login`);
         const response = await fetch(`${API_BASE}/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -42,6 +44,7 @@ document.getElementById('login-form')?.addEventListener('submit', async (e) => {
             showMessage('auth-message', data.error || 'Login failed', true);
         }
     } catch (err) {
+        console.error('Login error:', err);
         showMessage('auth-message', 'Server error. Make sure backend is running.', true);
     }
 });
@@ -62,6 +65,7 @@ document.getElementById('register-form')?.addEventListener('submit', async (e) =
     }
     
     try {
+        console.log('Attempting register to:', `${API_BASE}/register`);
         const response = await fetch(`${API_BASE}/register`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -79,6 +83,7 @@ document.getElementById('register-form')?.addEventListener('submit', async (e) =
             showMessage('auth-message', data.error || 'Registration failed', true);
         }
     } catch (err) {
+        console.error('Register error:', err);
         showMessage('auth-message', 'Cannot connect to server', true);
     }
 });
